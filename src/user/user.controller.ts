@@ -1,22 +1,22 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CreateUserDto } from './dtos/createUser.dto';
+import { UserService } from './user.service';
+import { User } from './interfaces/user.interface';
 
 
 @Controller('user')
 export class UserController {
+    constructor ( private readonly userService: UserService) {}
 
-
-    @Get() // teste da nossa api com nest para retornamos os dados do user em Get
-    async getAllUsers(){
-        return JSON.stringify({ test: 'abc '});
-    }
 
     @Post()
-    async createUser( @Body() createUser: CreateUserDto ) {
-        return{
-            ...createUser,
-            password: undefined,
-        } 
+    async createUser( @Body() createUser: CreateUserDto): Promise<User> {
+        return this.userService.createUser(createUser)
+    }
+
+    @Get()
+    async getAllUsers(): Promise<User[]>{
+        return this.userService.getAllUsers();
     }
 
 
