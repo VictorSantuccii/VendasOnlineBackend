@@ -1,5 +1,5 @@
-//import { CityEntity } from '../../city/entities/city.entity';
-//import { UserEntity } from '../../user/entities/user.entity';
+import { CityEntity } from '../../city/entities/city.entity';
+import { UserEntity } from '../../user/entities/user.entity';
 import {
   Column,
   CreateDateColumn,
@@ -38,14 +38,14 @@ export class AddressEntity {
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-///  @ManyToOne(() => UserEntity, (user) => user.addresses)
-// @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
- // user?: UserEntity;
+  @ManyToOne(() => UserEntity, (user) => user.addresses)
+ @JoinColumn({ name: 'user_id', referencedColumnName: 'id' }) // referência da tablea onde existe a coluna user_id, que se relaciona com a coluna id do user
+ user?: UserEntity;
 
- // @ManyToOne(() => CityEntity, (city) => city.addresses)
- // @JoinColumn({ name: 'city_id', referencedColumnName: 'id' })
- // city?: CityEntity;
+  @ManyToOne(() => CityEntity, (city) => city.addresses)
+ @JoinColumn({ name: 'city_id', referencedColumnName: 'id' })
+ city?: CityEntity;
 
- // @OneToMany(() => OrderEntity, (order) => order.address)
- // orders?: OrderEntity[];
+ //@OneToMany(() => OrderEntity, (order) => order.address)
+  //orders?: OrderEntity[];
 }

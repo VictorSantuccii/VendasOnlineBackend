@@ -34,6 +34,23 @@ export class UserService {
         return this.userRepository.find();
     }
 
+
+    async getUserByIdUsingRelations(userId: number): Promise<UserEntity> {
+        return this.userRepository.findOne({
+            where: {
+                id: userId
+            },
+            relations: {
+                addresses: {
+                    city: {
+                        state: true
+                    }
+                }
+            }
+        })
+    }
+
+
     async findUserById(userId: number): Promise<UserEntity> {
         const user = await this.userRepository.findOne({
             where: {
