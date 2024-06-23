@@ -6,7 +6,7 @@ import { Param } from '@nestjs/common';
 import { Roles } from 'src/decorators/roles.decorator';
 import { UserType } from 'src/user/enum/user-type.enum';
 
-
+@Roles(UserType.User)
 @Controller('address')
 export class AddressController {
 
@@ -14,7 +14,7 @@ export class AddressController {
         private readonly addressService: AddressService
     ){}
 
-    @Roles(UserType.User)
+   
     @Post('/:userId')
     @UsePipes(ValidationPipe)
     async createAddress( @Body() createAddressDto: createAddressDto, @Param('userId') userId: number): Promise<AddressEntity>
