@@ -12,6 +12,10 @@ import { RolesGuard } from './guards/roles.guard';
 import { JwtModule } from '@nestjs/jwt';
 
 
+
+
+
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -48,6 +52,6 @@ import { JwtModule } from '@nestjs/jwt';
   providers: [{
     provide: APP_GUARD,
     useClass: RolesGuard,
-  },],
+  }, ,],
 })
 export class AppModule {}

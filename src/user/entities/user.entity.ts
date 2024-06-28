@@ -1,5 +1,5 @@
 import { Column, PrimaryGeneratedColumn, Entity, CreateDateColumn, UpdateDateColumn } from "typeorm";
-import { AddressEntity } from "src/address/entities/address.entity";
+import { AddressEntity } from "../../address/entities/address.entity";
 import { OneToMany  } from "typeorm";
 
 
