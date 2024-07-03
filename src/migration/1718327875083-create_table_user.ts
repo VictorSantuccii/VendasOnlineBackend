@@ -8,7 +8,7 @@ export class CreateTableUser1718327875083 implements MigrationInterface {
             CREATE TABLE public.user (
                 id integer NOT NULL,
                 name character varying NOT NULL,
-                email  character varying NOT NULL,
+                email  character varying NOT NULL unique,
                 cpf  character varying NOT NULL,
                 type_user int NOT NULL,
                 phone  character varying NOT NULL,
