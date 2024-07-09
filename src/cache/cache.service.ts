@@ -23,6 +23,8 @@ export class CacheService {
         const cities: T = await functionRequest();
 
         await this.cacheManager.set(key, cities)
+
+        return cities;
     }
 
 }
